@@ -6,7 +6,7 @@ export function fetchArticles({ commit }, category='all'){
 	  url += `?category=${category}`
   }
 
-	axios.get(url)
+	return axios.get(url)
 		.then(({ data }) => {
 			commit('fetchArticles', data)
 		})

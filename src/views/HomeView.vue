@@ -53,11 +53,14 @@ watch(route, () => {
 
 <template>
   <main class="p-8 pt-28">
-    <h4 class="text-gray-500 font-semibold mb-4 mt-4">Today</h4>
-    <div class="grid md:grid-cols-5 grid-cols-2 gap-4 overflow-x-auto mb-4" v-if="todayArticles.length">
-      <NewsArticle :article="article" v-for="article in todayArticles" :key="article.id" />
+    <p v-if="!articles.length" class="text-center text-gray-500 font-bold pt-10">No articles found in this category</p>
+
+    <div v-if="todayArticles.length">
+      <h4 class="text-gray-500 font-semibold mb-4 mt-4">Today</h4>
+      <div class="grid md:grid-cols-5 grid-cols-2 gap-4 overflow-x-auto mb-4">
+        <NewsArticle :article="article" v-for="article in todayArticles" :key="article.id" />
+      </div>
     </div>
-    <p v-else class="text-center text-gray-500 font-bold">No articles found</p>
 
     <div v-if="weekArticles.length">
       <h4 class="text-gray-500 font-semibold mb-4">This Week</h4>
