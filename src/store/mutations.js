@@ -21,3 +21,11 @@ export function addComment(state, comment){
         state.article.comments = [comment];
     }
 }
+
+export function updateArticle(state, updatedArticle){
+    const index = state.articles.findIndex(article => article.id === updatedArticle.id)
+    if (index !== -1) {
+        state.articles.splice(index, 1, updatedArticle)
+    }
+}
+

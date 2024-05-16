@@ -55,3 +55,17 @@ export function addComment({ commit }, {comment, articleId}){
 		console.error(err)
 	})
 }
+
+export function updateArticle({ commit }, {articleId, updatedArticle}){
+	axios.patch(`http://localhost:3000/news-items/${articleId}`, updatedArticle, {
+		headers: {
+			'Content-Type': 'application/json'
+		},
+	})
+		.then(({ data }) => {
+			commit('updateArticle', data)
+		})
+		.catch((err) => {
+			console.log(err)
+		})
+}

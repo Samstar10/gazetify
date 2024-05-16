@@ -45,7 +45,10 @@ const addComment = () => {
 			<p class="w-full text-left font-light italic mb-5">{{ article.description }}</p>
 			<div class="w-full flex justify-between items-center">
 				<p class="font-thin italic">{{ article.likes > 1 || article.likes === 0 || article.likes === null ? `${article.likes} likes` : `${article.likes} like` }}</p>
-				<button @click="likeArticle" class="bg-blue-500 hover:bg-blue-700 text-white font-medimu py-2 px-4 rounded mt-5">Like Post</button>
+				<div>
+					<button @click="likeArticle" class="bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded mt-5 mr-2">Like Post</button>
+					<RouterLink :to="{name: 'edit-article', params: {id: article.id}}"><button class="bg-green-500 hover:bg-green-700 text-white font-medium py-2 px-4 rounded">Edit Article</button></RouterLink>
+				</div>
 			</div>
 		</div>
 		<div class="border-l-2 border-collapse top-20 z-500 h-screen w-1/4 p-8 fixed right-0">
@@ -59,7 +62,9 @@ const addComment = () => {
 				</ul>
 				<div>
 					<textarea v-model="newComment" placeholder="Add a comment" class="w-full p-2 focus:outline-none bg-gray-200 rounded-lg mb-5 text-sm"></textarea>
-					<button @click="addComment" class="bg-blue-500 hover:bg-blue-700 text-white font-medimu py-1 px-2 text-sm rounded">Add Comment</button>
+					<div>
+						<button @click="addComment" class="bg-blue-500 hover:bg-blue-700 text-white font-medimu py-1 px-2 text-sm rounded">Add Comment</button>
+					</div>
 				</div>
 			</div>
 			<!-- <p>{{ article.comments }}</p> -->

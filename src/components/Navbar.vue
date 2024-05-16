@@ -5,7 +5,7 @@
 <template>
   	<div class="fixed w-full top-0 z-1000 bg-white">
 		<div class="flex justify-between items center shadow-lg p-8">
-			<h1 class="text-3xl font-bold uppercase text-gray-700">Gazetify</h1>
+			<RouterLink :to="{name: 'home'}" class="text-3xl font-bold uppercase text-gray-700">Gazetify</RouterLink>
 			<div class="flex items-center gap-10">
 				<div class="flex gap-4">
 					<button class="border-2 border-red-300 hover:bg-red-300 px-3 py-2 rounded">Politics</button>

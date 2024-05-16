@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import NewArticleView from '../views/NewArticleView.vue'
 import ArticleView from '../views/ArticleView.vue'
+import EditArticleView from '../views/EditArticleView.vue'
 
 
 const router = createRouter({
@@ -21,6 +22,11 @@ const router = createRouter({
       path: '/article/:id',
       name: 'article',
       component: ArticleView
+    },
+    {
+      path: '/edit-article/:id',
+      name: 'edit-article',
+      component: EditArticleView
     }
   ]
 })
