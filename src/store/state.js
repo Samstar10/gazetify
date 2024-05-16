@@ -3,5 +3,4 @@ export default {
     newArticle: null,
     article: null,
     likes: 0,
-    comments: [],
 }

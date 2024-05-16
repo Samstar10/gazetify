@@ -15,5 +15,5 @@ export function incrementLikes(state, likes){
 }
 
 export function addComment(state, comment){
-    state.comments.push(comment)
+    state.article.comments.push(comment)
 }

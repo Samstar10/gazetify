@@ -26,7 +26,7 @@ const addComment = () => {
 			content: newComment.value,
 			posted_on: new Date().toDateString(),
 		}
-		store.dispatch('addComment', route.params.id)
+		store.dispatch('addComment', {articleId: route.params.id, comment})
 	}
 }
 </script>
@@ -56,7 +56,7 @@ const addComment = () => {
 					</li>
 				</ul>
 				<div>
-					<textarea name="" id="" cols="30" rows="10"></textarea>
+					<textarea v-model="newComment" name="" id="" cols="30" rows="10"></textarea>
 					<button @click="addComment">Add Comment</button>
 				</div>
 			</div>
