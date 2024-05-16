@@ -27,6 +27,7 @@ const addComment = () => {
 			posted_on: new Date().toDateString(),
 		}
 		store.dispatch('addComment', {articleId: route.params.id, comment})
+		newComment.value = ''
 	}
 }
 </script>
@@ -46,18 +47,18 @@ const addComment = () => {
 				<button @click="likeArticle" class="bg-blue-500 hover:bg-blue-700 text-white font-medimu py-2 px-4 rounded mt-5">Like Post</button>
 			</div>
 		</div>
-		<div class="border-l-2 h-screen w-1/4 p-8">
+		<div class="border-l-2 h-screen w-1/4 p-8 fixed right-0">
 			<div>
-				<h1>Comments</h1>
-				<ul>
-					<li v-for="comment in article.comments" :key="comment.id">
-						<p>{{ comment.content }}</p>
-						<p>{{ comment.posted_on }}</p>
+				<h1 class="text-xl font-bold mb-5 text-gray-600 text-center">Comments</h1>
+				<ul class="w-full">
+					<li v-for="comment in article.comments" :key="comment.id" class="w-full mb-5">
+						<p class="">{{ comment.content }}</p>
+						<p class="text-xs font-extralight italic">{{ comment.posted_on }}</p>
 					</li>
 				</ul>
 				<div>
-					<textarea v-model="newComment" name="" id="" cols="30" rows="10"></textarea>
-					<button @click="addComment">Add Comment</button>
+					<textarea v-model="newComment" placeholder="Add a comment" class="w-full p-2 focus:outline-none bg-gray-200 rounded-lg mb-5 text-sm"></textarea>
+					<button @click="addComment" class="bg-blue-500 hover:bg-blue-700 text-white font-medimu py-1 px-2 text-sm rounded">Add Comment</button>
 				</div>
 			</div>
 			<!-- <p>{{ article.comments }}</p> -->
