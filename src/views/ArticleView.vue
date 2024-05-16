@@ -14,6 +14,10 @@ onMounted(() => {
             console.log(article.value)
         })
 })
+
+const likeArticle = () => {
+	store.dispatch('incrementLikes', route.params.id)
+}
 </script>
 
 <template>
@@ -22,15 +26,17 @@ onMounted(() => {
 			<h1 class="text-3xl font-bold mb-5">{{ article.title }}</h1>
 			<img :src="article.thumbnail" :alt="article.title" class="w-2/3 h-1/2 object-fit rounded mb-5">
 			<div class="w-full flex justify-between items-center">
-				<p class="font-thin text-sm mb-5">Category: {{ article.category.toUpperCase() }}</p>
+				<p class="font-thin text-sm mb-5">Category: {{ article.category }}</p>
 				<p class="font-thin text-sm mb-5">Published on: {{ article.posted_on }}</p>
 			</div>
 			<p class="w-full text-left font-light italic mb-5">{{ article.description }}</p>
-			<p class="w-full text-left font-thin italic">{{ article.likes > 1 || article.likes === 0 || article.likes === null ? `${article.likes} likes` : `${article.likes} like` }}</p>
+			<div class="w-full flex justify-between items-center">
+				<p class="font-thin italic">{{ article.likes > 1 || article.likes === 0 || article.likes === null ? `${article.likes} likes` : `${article.likes} like` }}</p>
+				<button @click="likeArticle" class="bg-blue-500 hover:bg-blue-700 text-white font-medimu py-2 px-4 rounded mt-5">Like Post</button>
+			</div>
 		</div>
 		<div class="border-l-2 h-screen w-1/4 p-8">
 			<p>{{ article.comments }}</p>
-			<button>Like Post</button>
 		</div>
 	</div>
 </template> 

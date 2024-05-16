@@ -11,5 +11,5 @@ export function fetchArticle(state, article){
 }
 
 export function incrementLikes(state, likes){
-    state.likes = likes
+    state.article.likes = likes
 }

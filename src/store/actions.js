@@ -28,9 +28,12 @@ export function fetchArticle({ commit }, articleId){
 		})
 }
 
-export function incrementLikes({ commit }, articleId){
-	axios.patch(`http://localhost:3000/news-items/${articleId}`)
+export function incrementLikes({ commit, state }, articleId){
+	axios.patch(`http://localhost:3000/news-items/${articleId}`, { likes: state.article.likes + 1 })
 		.then(({ data }) => {
 			commit('incrementLikes', data.likes)
+		})
+		.catch((err) => {
+			console.log(err)
 		})
 }
