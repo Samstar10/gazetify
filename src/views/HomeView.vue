@@ -34,17 +34,17 @@ const categorizeArticles = () => {
   })
 }
 
-onMounted(() => {
-  fetchArticles()
-})
-
 const fetchArticles = () => {
   const category = route.query.category || 'all'
 
-  store.dispatch('fetchArticles', category).then(() => {
-    categorizeArticles()
-  })
+
+  categorizeArticles()
+  store.dispatch('fetchArticles', category)
 }
+
+onMounted(() => {
+  fetchArticles()
+})
 
 watch(route, () => {
   fetchArticles()
@@ -75,7 +75,7 @@ watch(route, () => {
 
     <div v-if="olderArticles.length">
       <h4 class="text-gray-500 font-semibold mb-4">Older</h4>
-      <div class="grid md:grid-cols-5 grid-cols-2 gap-4 overflow-x-auto mb-4" v-if="olderArticles.length">
+      <div class="grid md:grid-cols-5 grid-cols-2 gap-4 overflow-x-auto mb-4">
         <NewsArticle :article="article" v-for="article in olderArticles" :key="article.id" />
       </div>
     </div>
