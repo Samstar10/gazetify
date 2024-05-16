@@ -12,7 +12,7 @@ const newComment = ref('')
 onMounted(() => {
     store.dispatch('fetchArticle', route.params.id)
         .then(() => {
-            console.log(article.comments)
+            console.log(article.value.comments)
         })
 })
 
@@ -27,7 +27,9 @@ const addComment = () => {
 			posted_on: new Date().toDateString(),
 		}
 		store.dispatch('addComment', {articleId: route.params.id, comment})
-		newComment.value = ''
+		.then(() => {
+			newComment.value = ''
+		})
 	}
 }
 </script>

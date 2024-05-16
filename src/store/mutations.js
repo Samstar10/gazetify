@@ -1,31 +1,24 @@
-export function fetchArticles(state, articles){
-    state.articles = articles
-}
-
-export function addArticle(state, article){
-    state.newArticle = article
-}
-
-export function fetchArticle(state, article){
-    state.article = article
-}
-
-export function incrementLikes(state, likes){
-    state.article.likes = likes
-}
-
-export function addComment(state, comment){
-    if (state.article && Array.isArray(state.article.comments)) {
-        state.article.comments.push(comment);
-    } else if (state.article) {
-        state.article.comments = [comment];
-    }
-}
-
-export function updateArticle(state, updatedArticle){
-    const index = state.articles.findIndex(article => article.id === updatedArticle.id)
-    if (index !== -1) {
-        state.articles.splice(index, 1, updatedArticle)
+export default {
+    async fetchArticles(state, articles){
+        state.articles = articles
+    },
+    async addArticle(state, article){
+        state.newArticle = article
+    },
+    async fetchArticle(state, article){
+        state.article = article
+    },
+    async incrementLikes(state, likes){
+        state.article.likes = likes
+    },
+    async addComment(state, updatedArticle){
+        state.article.comments = updatedArticle.comments
+    },
+    async updateArticle(state, updatedArticle){
+        const index = state.articles.findIndex(article => article.id === updatedArticle.id)
+        if (index !== -1) {
+            state.articles.splice(index, 1, updatedArticle)
+        }
     }
 }
 
