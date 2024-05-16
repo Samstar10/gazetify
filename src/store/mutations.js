@@ -13,3 +13,7 @@ export function fetchArticle(state, article){
 export function incrementLikes(state, likes){
     state.article.likes = likes
 }
+
+export function addComment(state, comment){
+    state.comments.push(comment)
+}

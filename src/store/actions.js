@@ -37,3 +37,17 @@ export function incrementLikes({ commit, state }, articleId){
 			console.log(err)
 		})
 }
+
+export function addComment({ commit }, {comment, articleId}){
+	axios.patch(`http://localhost:3000/news-items/${articleId}`, comment, {
+		headers: {
+			'Content-Type': 'application/json'
+		}
+	})
+	.then(({ data }) => {
+		commit('addComment', data)
+	})
+	.catch(err => {
+		console.error(err)
+	})
+}

@@ -1,12 +1,13 @@
 <script setup>
 
 import { useRoute } from 'vue-router';
-import { onMounted, computed } from 'vue';
+import { onMounted, computed, ref } from 'vue';
 import store from '@/store';
 
 const route = useRoute()
 
 const article = computed(() => store.state.article || {})
+const newComment = ref('')
 
 onMounted(() => {
     store.dispatch('fetchArticle', route.params.id)
@@ -17,6 +18,16 @@ onMounted(() => {
 
 const likeArticle = () => {
 	store.dispatch('incrementLikes', route.params.id)
+}
+
+const addComment = () => {
+	if(newComment.value.trim()){
+		const comment = {
+			content: newComment.value,
+			posted_on: new Date().toDateString(),
+		}
+		store.dispatch('addComment', route.params.id)
+	}
 }
 </script>
 
@@ -35,7 +46,20 @@ const likeArticle = () => {
 				<button @click="likeArticle" class="bg-blue-500 hover:bg-blue-700 text-white font-medimu py-2 px-4 rounded mt-5">Like Post</button>
 			</div>
 		</div>
-		<div class="border-l-2 h-screen w-1/4 p-8">
+		<div class="border-l-2 h-screen w-1/4 p-8" v-for="comment in comments" :key="article.comment.id">
+			<div>
+				<h1>Comments</h1>
+				<ul>
+					<li v-for="comment in article.comments" :key="comment.id">
+						<p>{{ comment.text }}</p>
+						<p>{{ comment.posted_on }}</p>
+					</li>
+				</ul>
+				<div>
+					<textarea name="" id="" cols="30" rows="10"></textarea>
+					<button @click="addComment">Add Comment</button>
+				</div>
+			</div>
 			<p>{{ article.comments }}</p>
 		</div>
 	</div>

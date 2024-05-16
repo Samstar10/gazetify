@@ -2,5 +2,6 @@ export default {
     articles: [],
     newArticle: null,
     article: null,
-    likes: 0
+    likes: 0,
+    comments: [],
 }
