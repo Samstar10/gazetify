@@ -1,9 +1,17 @@
 import axios from "axios";
 
-export function fetchArticles({ commit }){
-  axios.get('http://localhost:3000/news-items')
+export function fetchArticles({ commit }, category='all'){
+	let url = 'http://localhost:3000/news-items'
+  if (category && category !== 'all') {
+	  url += `?category=${category}`
+  }
+
+	axios.get(url)
 		.then(({ data }) => {
 			commit('fetchArticles', data)
+		})
+		.catch((err) => {
+			console.log(err)
 		})
 }
 
