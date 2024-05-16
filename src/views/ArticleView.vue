@@ -33,7 +33,8 @@ const addComment = () => {
 </script>
 
 <template>
-  <div class="flex justify-between">
+  <div class="pt-24">
+		<div class="flex justify-between">
 		<div class="flex flex-col items-center w-3/4 p-8">
 			<h1 class="text-3xl font-bold mb-5">{{ article.title }}</h1>
 			<img :src="article.thumbnail" :alt="article.title" class="w-2/3 h-1/2 object-fit rounded mb-5">
@@ -47,7 +48,7 @@ const addComment = () => {
 				<button @click="likeArticle" class="bg-blue-500 hover:bg-blue-700 text-white font-medimu py-2 px-4 rounded mt-5">Like Post</button>
 			</div>
 		</div>
-		<div class="border-l-2 h-screen w-1/4 p-8 fixed right-0">
+		<div class="border-l-2 border-collapse top-20 z-500 h-screen w-1/4 p-8 fixed right-0">
 			<div>
 				<h1 class="text-xl font-bold mb-5 text-gray-600 text-center">Comments</h1>
 				<ul class="w-full">
@@ -63,5 +64,6 @@ const addComment = () => {
 			</div>
 			<!-- <p>{{ article.comments }}</p> -->
 		</div>
+	</div>
 	</div>
 </template> 

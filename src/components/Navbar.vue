@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  	<div class="">
+  	<div class="fixed w-full top-0 z-1000 bg-white">
 		<div class="flex justify-between items center shadow-lg p-8">
 			<h1 class="text-3xl font-bold uppercase text-gray-700">Gazetify</h1>
 			<div class="flex items-center gap-10">
