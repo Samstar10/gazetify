@@ -9,7 +9,7 @@ const props = defineProps({
 
 <template>
   <!-- <RouterLink :to="{name: 'article', params: {id: article.id}}" > -->
-    <RouterLink :to="{name: 'article', params: {id: article.id}}" class="shadow-lg hover:shadow-xl rounded box-border max-h-[300px]">
+    <RouterLink :to="{name: 'article', params: {id: article.id}}" class="shadow-lg hover:shadow-2xl rounded box-border max-h-[300px]">
       <img :src="article.thumbnail" :alt="article.title" class="w-full h-1/2 object-cover rounded">
       <div class="p-2">
 				<h3 class="text-center font-semibold">{{ article.title }}</h3>
