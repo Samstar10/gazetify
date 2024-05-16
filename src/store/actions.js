@@ -39,13 +39,17 @@ export function incrementLikes({ commit, state }, articleId){
 }
 
 export function addComment({ commit }, {comment, articleId}){
-	axios.patch(`http://localhost:3000/news-items/${articleId}`, {comments: comment}, {
-		headers: {
-			'Content-Type': 'application/json'
-		}
+	axios.get(`http://localhost:3000/news-items/${articleId}`)
+	.then(({ data }) => {
+		const updatedComments = Array.isArray(data.comments) ? [...data.comments, comment] : [comment]
+		return axios.patch(`http://localhost:3000/news-items/${articleId}`, { comments: updatedComments }, {
+			headers: {
+				'Content-Type': 'application/json'
+			},
+		})
 	})
 	.then(({ data }) => {
-		commit('addComment', comment)
+		commit('addComment', data)
 	})
 	.catch(err => {
 		console.error(err)

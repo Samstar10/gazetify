@@ -6,7 +6,7 @@ import store from '@/store';
 
 const route = useRoute()
 
-const article = computed(() => store.state.article || [])
+const article = computed(() => store.state.article || {})
 const newComment = ref('')
 
 onMounted(() => {
@@ -51,7 +51,7 @@ const addComment = () => {
 				<h1>Comments</h1>
 				<ul>
 					<li v-for="comment in article.comments" :key="comment.id">
-						<p>{{ comment.text }}</p>
+						<p>{{ comment.content }}</p>
 						<p>{{ comment.posted_on }}</p>
 					</li>
 				</ul>

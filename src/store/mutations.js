@@ -15,7 +15,7 @@ export function incrementLikes(state, likes){
 }
 
 export function addComment(state, comment){
-    if (state.article && state.article.comments) {
+    if (state.article && Array.isArray(state.article.comments)) {
         state.article.comments.push(comment);
     } else if (state.article) {
         state.article.comments = [comment];
