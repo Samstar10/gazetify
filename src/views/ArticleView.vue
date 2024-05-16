@@ -6,13 +6,13 @@ import store from '@/store';
 
 const route = useRoute()
 
-const article = computed(() => store.state.article || {})
+const article = computed(() => store.state.article || [])
 const newComment = ref('')
 
 onMounted(() => {
     store.dispatch('fetchArticle', route.params.id)
         .then(() => {
-            console.log(article.value)
+            console.log(article.comments)
         })
 })
 
@@ -46,7 +46,7 @@ const addComment = () => {
 				<button @click="likeArticle" class="bg-blue-500 hover:bg-blue-700 text-white font-medimu py-2 px-4 rounded mt-5">Like Post</button>
 			</div>
 		</div>
-		<div class="border-l-2 h-screen w-1/4 p-8" v-for="comment in comments" :key="article.comment.id">
+		<div class="border-l-2 h-screen w-1/4 p-8">
 			<div>
 				<h1>Comments</h1>
 				<ul>
@@ -60,7 +60,7 @@ const addComment = () => {
 					<button @click="addComment">Add Comment</button>
 				</div>
 			</div>
-			<p>{{ article.comments }}</p>
+			<!-- <p>{{ article.comments }}</p> -->
 		</div>
 	</div>
 </template> 

@@ -1,6 +1,8 @@
 export default {
     articles: [],
     newArticle: null,
-    article: null,
+    article: {
+        comments: []
+    },
     likes: 0,
 }
