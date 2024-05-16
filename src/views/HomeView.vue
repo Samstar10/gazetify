@@ -37,9 +37,9 @@ const categorizeArticles = () => {
 const fetchArticles = () => {
   const category = route.query.category || 'all'
 
-
-  categorizeArticles()
-  store.dispatch('fetchArticles', category)
+  store.dispatch('fetchArticles', category).then(() => {
+    categorizeArticles()
+  })
 }
 
 onMounted(() => {
